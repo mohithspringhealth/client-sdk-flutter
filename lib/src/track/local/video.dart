@@ -161,8 +161,7 @@ class LocalVideoTrack extends LocalTrack with VideoTrack {
     return items;
   }
 
-  // Private constructor
-  LocalVideoTrack._(
+  LocalVideoTrack(
     TrackSource source,
     rtc.MediaStream stream,
     rtc.MediaStreamTrack track,
@@ -181,7 +180,7 @@ class LocalVideoTrack extends LocalTrack with VideoTrack {
     options ??= const CameraCaptureOptions();
 
     final stream = await LocalTrack.createStream(options);
-    return LocalVideoTrack._(
+    return LocalVideoTrack(
       TrackSource.camera,
       stream,
       stream.getVideoTracks().first,
@@ -203,7 +202,7 @@ class LocalVideoTrack extends LocalTrack with VideoTrack {
     options ??= const ScreenShareCaptureOptions();
 
     final stream = await LocalTrack.createStream(options);
-    return LocalVideoTrack._(
+    return LocalVideoTrack(
       TrackSource.screenShareVideo,
       stream,
       stream.getVideoTracks().first,
@@ -231,7 +230,7 @@ class LocalVideoTrack extends LocalTrack with VideoTrack {
     final stream = await LocalTrack.createStream(options);
 
     List<LocalTrack> tracks = [
-      LocalVideoTrack._(
+      LocalVideoTrack(
         TrackSource.screenShareVideo,
         stream,
         stream.getVideoTracks().first,
